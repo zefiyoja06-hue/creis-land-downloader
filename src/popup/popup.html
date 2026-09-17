@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中指土地批量下载助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>中指土地批量下载助手</h1>
+      <span class="badge">加密响应修复版 0.6.5</span>
+    </header>
+
+    <section class="page-card">
+      <div class="label">当前页面</div>
+      <div id="pageTitle" class="value">正在读取…</div>
+      <div id="pageHint" class="muted"></div>
+      <div class="summary">已识别：<strong id="count">0</strong> 宗</div>
+      <button id="scanButton" class="primary">扫描当前页面</button>
+    </section>
+
+    <section>
+      <div class="section-title">下载内容</div>
+      <label><input id="downloadHouse" type="checkbox" checked> 周边项目成交均价</label>
+      <label><input id="downloadLand" type="checkbox" checked> 周边土地推出楼面价</label>
+      <label><input id="downloadDocuments" type="checkbox"> 出让资料压缩包（单独文件夹）</label>
+    </section>
+
+    <section>
+      <div class="section-title row-between">
+        <span>地块列表</span>
+        <label class="inline"><input id="selectAll" type="checkbox" checked> 全选</label>
+      </div>
+      <div id="landList" class="land-list"><div class="empty">请先扫描推出地块页面</div></div>
+    </section>
+
+    <section class="actions">
+      <button id="openHouse">打开首个选中项：周边项目</button>
+      <button id="openLand">打开首个选中项：周边土地</button>
+      <button id="startBatch" class="primary">开始一键下载</button>
+      <button id="cancelBatch" class="danger" hidden>停止任务</button>
+      <button id="retryFailed" hidden>重新下载失败项目</button>
+    </section>
+
+    <section id="progressCard" hidden>
+      <div class="section-title row-between"><span>处理进度</span><span id="progressText">0 / 0</span></div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      <div id="currentTask" class="muted"></div>
+      <div class="result-grid">
+        <span>成功 <strong id="successCount">0</strong></span>
+        <span>失败 <strong id="failedCount">0</strong></span>
+        <span>等待 <strong id="pendingCount">0</strong></span>
+        <span>取消 <strong id="cancelledCount">0</strong></span>
+      </div>
+      <div id="failureDetails" class="failure-details" hidden></div>
+    </section>
+
+    <section class="click-card">
+      <div class="section-title">下载按钮标定</div>
+      <div class="muted">自动识别失败时，先打开任一周边页面，再标定右侧下载图标。</div>
+      <div class="calibration-actions">
+        <button id="calibrateButton">标定下载图标</button>
+        <button id="testClickButton">测试真实点击</button>
+      </div>
+      <div id="calibrationState" class="summary">尚未标定</div>
+    </section>
+
+    <section class="capture-card">
+      <div class="section-title">请求捕获模式</div>
+      <div class="muted">先打开对应分析页，点击下面的捕获按钮，再回网页人工点击一次“下载为表格”。无需打开 F12。</div>
+      <div class="capture-actions">
+        <button id="captureHouse">捕获周边项目</button>
+        <button id="captureLand">捕获周边土地</button>
+      </div>
+      <div class="capture-actions">
+        <button id="stopCapture" hidden>结束并保存最佳候选</button>
+        <button id="copyCapture">复制捕获结果</button>
+      </div>
+      <button id="clearCapture" class="text-button">清空捕获结果</button>
+      <div id="captureState" class="summary">尚未捕获</div>
+      <div id="captureProfiles" class="capture-profiles"></div>
+    </section>
+
+    <section class="debug-card">
+      <div class="row-between">
+        <div>
+          <div class="section-title">调试模式</div>
+          <div class="muted">捕获候选 fetch / XHR 请求，自动脱敏认证字段</div>
+        </div>
+        <label class="switch"><input id="debugToggle" type="checkbox"><span></span></label>
+      </div>
+      <div class="debug-actions">
+        <button id="copyLogs">复制请求日志</button>
+        <button id="clearLogs">清空日志</button>
+        <button id="copyDiagnostics">复制 DOM 诊断</button>
+      </div>
+      <div class="summary">已捕获：<strong id="logCount">0</strong> 条候选请求</div>
+    </section>
+
+    <div id="status" class="status" aria-live="polite"></div>
+  </main>
+  <script src="../modules/constants.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

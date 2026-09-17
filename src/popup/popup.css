@@ -1,0 +1,58 @@
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: #1f2937;
+  background: #f5f7fa;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; width: 410px; max-height: 620px; overflow-y: auto; }
+main { padding: 14px; }
+header { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+h1 { margin: 0; font-size: 18px; }
+.badge { padding: 2px 7px; border-radius: 999px; color: #7c2d12; background: #ffedd5; font-size: 11px; }
+section { margin-bottom: 12px; padding: 12px; border: 1px solid #e5e7eb; border-radius: 10px; background: white; }
+.page-card { border-top: 3px solid #b91c1c; }
+.label, .section-title { font-weight: 700; font-size: 13px; }
+.value { margin-top: 4px; font-size: 13px; word-break: break-all; }
+.muted { margin-top: 3px; color: #6b7280; font-size: 11px; line-height: 1.45; }
+.summary { margin: 8px 0; font-size: 12px; }
+label { display: block; margin-top: 7px; font-size: 13px; }
+button { min-height: 34px; padding: 7px 10px; border: 1px solid #d1d5db; border-radius: 7px; color: #374151; background: #fff; cursor: pointer; font: inherit; }
+button:hover:not(:disabled) { border-color: #b91c1c; color: #991b1b; }
+button:disabled { color: #9ca3af; background: #f3f4f6; cursor: not-allowed; }
+button.primary { width: 100%; color: white; border-color: #b91c1c; background: #b91c1c; }
+button.danger { color: #991b1b; border-color: #fecaca; background: #fef2f2; }
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.inline { display: inline-flex; align-items: center; margin: 0; font-weight: 400; }
+.land-list { max-height: 225px; margin-top: 8px; overflow-y: auto; border-top: 1px solid #f0f1f3; }
+.land-item { display: grid; grid-template-columns: 22px 1fr; gap: 4px; padding: 9px 2px; border-bottom: 1px solid #f0f1f3; }
+.land-item input { margin-top: 3px; }
+.land-code { font-weight: 700; font-size: 12px; }
+.land-name { margin-top: 2px; color: #4b5563; font-size: 12px; line-height: 1.4; }
+.land-meta { margin-top: 3px; color: #9ca3af; font-family: Consolas, monospace; font-size: 10px; }
+.empty { padding: 18px 4px; color: #9ca3af; text-align: center; font-size: 12px; }
+.actions { display: grid; gap: 7px; }
+.click-card { border-color: #fed7aa; }
+.capture-card { border-color: #bbf7d0; }
+.calibration-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 9px; }
+.capture-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 9px; }
+.capture-profiles { color: #166534; font-size: 11px; line-height: 1.5; word-break: break-all; }
+.text-button { width: 100%; margin-top: 7px; min-height: 28px; border: 0; color: #6b7280; background: transparent; font-size: 11px; }
+.progress-track { height: 8px; margin: 9px 0; overflow: hidden; border-radius: 999px; background: #e5e7eb; }
+.progress-bar { width: 0; height: 100%; border-radius: inherit; background: #b91c1c; transition: width .2s; }
+.result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 9px; font-size: 12px; text-align: center; }
+.failure-details { max-height: 110px; margin-top: 9px; padding: 7px; overflow-y: auto; border-radius: 6px; color: #991b1b; background: #fef2f2; font-size: 11px; line-height: 1.5; white-space: pre-wrap; }
+.debug-card { border-color: #c7d2fe; }
+.debug-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin-top: 10px; }
+.debug-actions button { padding: 5px; font-size: 11px; }
+.switch { position: relative; flex: 0 0 auto; width: 42px; height: 23px; margin: 0; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch span { position: absolute; inset: 0; border-radius: 20px; background: #d1d5db; cursor: pointer; transition: .2s; }
+.switch span::before { content: ""; position: absolute; width: 17px; height: 17px; left: 3px; top: 3px; border-radius: 50%; background: white; transition: .2s; }
+.switch input:checked + span { background: #4f46e5; }
+.switch input:checked + span::before { transform: translateX(19px); }
+.status { position: sticky; bottom: 0; min-height: 0; padding: 8px 10px; border-radius: 7px; color: #374151; background: #eef2ff; font-size: 12px; line-height: 1.4; }
+.status:empty { display: none; }
+.status.error { color: #991b1b; background: #fee2e2; }
+.status.success { color: #166534; background: #dcfce7; }

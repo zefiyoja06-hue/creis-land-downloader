@@ -1,0 +1,10 @@
+*.zip
+*.crx
+*.pem
+Thumbs.db
+.DS_Store
+node_modules/
+_package_verify_*/
+tools/regression-sample.xlsx
+capture-*.json
+debug-*.json

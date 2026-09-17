@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "中指土地批量下载助手",
+  "version": "0.6.5",
+  "description": "批量生成 CREIS 周边数据表格，并下载、归档每宗地的出让资料压缩包。",
+  "permissions": [
+    "alarms",
+    "downloads",
+    "debugger",
+    "scripting",
+    "storage",
+    "tabs",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "https://creis.fang.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://*.fang.com/*"
+  ],
+  "action": {
+    "default_title": "中指土地批量下载助手",
+    "default_popup": "src/popup/popup.html"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://creis.fang.com/land/4.0/*"
+      ],
+      "js": [
+        "src/page-hook.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://creis.fang.com/land/4.0/*"
+      ],
+      "js": [
+        "src/modules/constants.js",
+        "src/modules/logger.js",
+        "src/modules/filename.js",
+        "src/modules/scanner.js",
+        "src/modules/automation.js",
+        "src/modules/click-automation.js",
+        "src/content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
